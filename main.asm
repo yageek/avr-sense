@@ -11,8 +11,8 @@
 
 .section .text
 .ORG 0x00
-
 	rjmp Main
+
 		
 ; ============================================
 ;     M A I N    P R O G R A M    I N I T
@@ -30,9 +30,11 @@ Main:
 	out PORTD, r17
 	out DDRD, r16
 	nop ; Synchronisation
-	cbi PORTD, 0
+	sbi PORTD, 0
 	
-
+Delay:
+	ldi r15, 0xff
+	ldi r14, 0xff
 
 ;
 ; ============================================

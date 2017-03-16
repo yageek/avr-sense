@@ -31,10 +31,7 @@ Main:
 	out DDRD, r16
 	nop ; Synchronisation
 	sbi PORTD, 0
-	
-Delay:
-	ldi r15, 0xff
-	ldi r14, 0xff
+
 
 ;
 ; ============================================

@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/usr/local/CrossPack-AVR/avr/include"
+            ]
+        }
+    ]
+}

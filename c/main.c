@@ -7,10 +7,12 @@
 
 int main(void) {
 
-    for(;;) {
-        PORTD = 0x00;
+    DDRD |= _BV(DDRD5);
+    
+    while (1) {
+       PORTD |= _BV(PORTD5);
        _delay_ms(100);
-       PORTD = 0xff;
+       PORTD &= ~(_BV(PORTD5));
        _delay_ms(100);
     }
 }

@@ -7,38 +7,25 @@
 ;
 ; Included header file for target AVR type
 
+.NOLIST   
 .INCLUDE "tn2313def.inc"
+.LIST
 
-.section .text
+.DEF TEMP1 = R16
+
+.CSEG 
 .ORG 0x00
-	rjmp Main
+	RJMP reset
 
-		
-; ============================================
-;     M A I N    P R O G R A M    I N I T
-; ============================================
-;
-Main:
+.INCLUDe "one_wire.asm"
 
-; ============================================
-;     PORT D Configuration
-; ============================================
-	
-	; All pins of PORTD as Output
-	ldi r16, 0xff
-	ldi r17, 0x00
-	out PORTD, r17
-	out DDRD, r16
-	nop ; Synchronisation
-	sbi PORTD, 0
+reset:
+	LDI TEMP1, LOW(RAMEND)
+	OUT SPL, TEMP1
+	SEI
+	RJMP loop
 
-
-;
-; ============================================
-;         P R O G R A M    L O O P
-; ============================================
-;
-Loop:
-	rjmp Loop ; main loop
+loop:
+	RJMP loop ; main loop
 	
 

@@ -3,8 +3,7 @@
 all: main.hex
 
 main.hex: main.asm one_wire.asm
-	wine ../AVR2/avrasm2.exe main.asm -I ../AVR2/
-
+	wine ../AVR2/avrasm2.exe main.asm -fI -I ../AVR2/
 clean:
 	rm -rf *.out
 	rm -rf *.hex

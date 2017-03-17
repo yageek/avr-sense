@@ -12,19 +12,25 @@
 .LIST
 
 .DEF TEMP1 = R16
+.DEF TEMP2 = R17
 
 .CSEG 
 .ORG 0x00
 	RJMP reset
 
-.INCLUDe "one_wire.asm"
-
 reset:
 	LDI TEMP1, LOW(RAMEND)
 	OUT SPL, TEMP1
 	SEI
-	RJMP loop
+	RJMP setup
 
+setup:
+	LDI TEMP1, 0xFF
+	LDI TEMP2, 0x00
+	out DDRD, TEMP1
+	out PORTD, TEMP2
+	SBI PORTD, 0
+	
 loop:
 	RJMP loop ; main loop
 	
